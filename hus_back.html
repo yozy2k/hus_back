@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+<style>
+/*R320-R500*/
+@media screen and (max-width:500px){
+
+@font-face {
+	font-family:"Senty Snow Mountain";
+	src: url(fonts/SentySnowMountain.ttf);
+}
+body {
+	margin: 0;
+	background-image: 	url(images/letter.jpg);
+}
+#demo1 {
+	position: relative;
+	top:70px;
+	color: black;
+	font-family:"Senty Snow Mountain";
+	font-size: 2rem;
+	text-align: center;
+	margin: 0 10px;
+}
+.time {
+	display: inline;
+	color: red;
+	margin: 0;
+}
+#canvas {
+	display: block;
+	position: relative;
+	top: 70px;
+	margin: 0 auto;
+}
+}
+</style>
+
+<body onload="init();">
+<div id = "demo1">demo</div>
+<canvas id="canvas" width="200" height="250" ></canvas>
+
+
+
+
+<script src="https://code.createjs.com/createjs-2015.11.26.min.js"></script>
+<script src="scripts/head.js"></script>
+<script>
+//倒數
+var myinterval = setInterval(check, 1);
+function check(){
+var set = new Date(2016, 8, 18, 0, 00, 00, 000);//月要-1因為index從0開始；設定的時間還要再減8小時，因為GMT+8。
+var current = new Date();
+var countdown = new Date(set - current);
+document.getElementById("demo1").innerHTML =
+ "距離老公回來還有<div class = 'time'>" + (countdown.getDate()-1) + "</div>天<div class = 'time'>" + countdown.getHours() +
+ "</div>小時<div class = 'time'>" + countdown.getMinutes() + "</div>分<div class = 'time'>" + countdown.getSeconds() + "</div>秒<br/><div class = 'time'>" +
+ countdown.getMilliseconds() + "</div>毫秒";//天-1，例如(set)10-(current)9 = 1，但在第9天距離第10天不到1天。
+}
+</script>
+
+
+
+
+</body>
+</html>
